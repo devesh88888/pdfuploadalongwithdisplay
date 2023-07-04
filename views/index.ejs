@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF Upload</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>PDF Upload</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+      <input type="file" name="pdfFile" accept=".pdf" required />
+      <input type="submit" value="Upload" />
+    </form>
+    <hr />
+    <h2>Uploaded PDFs:</h2>
+    <% if (files && files.length > 0) { %>
+    <ul>
+      <% files.forEach(function (file) { %>
+      <li>
+        <a href="/uploads/<%= file %>"><%= file %></a>
+      </li>
+      <% }); %>
+    </ul>
+    <% } else { %>
+    <p>No PDFs uploaded yet.</p>
+    <% } %>
+  </body>
+</html>
